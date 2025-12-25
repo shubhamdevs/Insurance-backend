@@ -31,17 +31,29 @@ def root():
         'service': 'Insurance API',
         'version': '1.0.0',
         'status': 'running',
+        'base_url': 'https://insurance-backend-drv2.onrender.com',
         'endpoints': {
-            'health': '/health',
-            'policy_status': '/api/v1/policy/status',
-            'claims_balance': '/api/v1/policy/claims-balance',
-            'premium_info': '/api/v1/policy/premium',
-            'coverage_details': '/api/v1/policy/coverage',
-            'beneficiaries': '/api/v1/policy/beneficiaries',
-            'medical_history': '/api/v1/policy/medical-history',
-            'complete_info': '/api/v1/policy/complete-info'
+            'health': 'GET /health',
+            'policy_status': 'POST /api/v1/policy/status',
+            'claims_balance': 'POST /api/v1/policy/claims-balance',
+            'premium_info': 'POST /api/v1/policy/premium',
+            'coverage_details': 'POST /api/v1/policy/coverage',
+            'beneficiaries': 'POST /api/v1/policy/beneficiaries',
+            'medical_history': 'POST /api/v1/policy/medical-history',
+            'complete_info': 'POST /api/v1/policy/complete-info'
         },
-        'note': 'All /api/v1/* endpoints require X-API-Key header'
+        'note': 'All /api/v1/* endpoints require X-API-Key header and POST method',
+        'example_request': {
+            'method': 'POST',
+            'url': '/api/v1/policy/status',
+            'headers': {
+                'Content-Type': 'application/json',
+                'X-API-Key': 'your-api-key-here'
+            },
+            'body': {
+                'policy_id': 'SH-2024-987654'
+            }
+        }
     }, 'Insurance API is running')
 
 # ============================================================================
