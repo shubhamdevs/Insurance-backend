@@ -21,6 +21,30 @@ logging.basicConfig(level=config.LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
 # ============================================================================
+# ROOT ENDPOINT
+# ============================================================================
+
+@app.route('/', methods=['GET'])
+def root():
+    """Root endpoint - API information"""
+    return success_response({
+        'service': 'Insurance API',
+        'version': '1.0.0',
+        'status': 'running',
+        'endpoints': {
+            'health': '/health',
+            'policy_status': '/api/v1/policy/status',
+            'claims_balance': '/api/v1/policy/claims-balance',
+            'premium_info': '/api/v1/policy/premium',
+            'coverage_details': '/api/v1/policy/coverage',
+            'beneficiaries': '/api/v1/policy/beneficiaries',
+            'medical_history': '/api/v1/policy/medical-history',
+            'complete_info': '/api/v1/policy/complete-info'
+        },
+        'note': 'All /api/v1/* endpoints require X-API-Key header'
+    }, 'Insurance API is running')
+
+# ============================================================================
 # HEALTH CHECK ENDPOINT
 # ============================================================================
 
